@@ -5,7 +5,8 @@ import datetime
 
 client = discord.Client()
 
-token = "NDkwNjkxMTEwOTAyMDM4NTM4.Dn9AIg.Yto767aawLn7IrI-wRXpdi1AeBI"
+token = "Privileged information!"
+
 brits = [ "338795697081942018", "381657087031246858", "490691110902038538" ]
 responses = [ "England is my city!",
               "Oi m8!  You got a loiscense for that?",
@@ -28,6 +29,19 @@ responses = [ "England is my city!",
 cbh_responses = [ ":cloud_lightning: The Clickbait Hour :cloud_lightning:",
                   "https://cdn.discordapp.com/attachments/339580111999205376/491011824297443338/Screenshot_1.PNG",
                   "https://cdn.discordapp.com/attachments/339580111999205376/491012061577347112/asfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff.png"]
+
+england_words = [ "britain",
+                  "england",
+                  "the uk",
+                  "the u.k.",
+                  "british",
+                  "english" ]
+america_words = [ "america",
+                  "the united states",
+                  "the us",
+                  "usa",
+                  "u.s.",
+                  "u.s.a." ]
 
 @client.event
 async def on_ready():
@@ -59,11 +73,13 @@ async def on_message(message):
         print("I was caled by my nickname!")
 
     # Reacts to a message depending on which country it is
-    if "britain" in message.content.lower() or "england" in message.content.lower() or "the uk" in message.content.lower() or "the u.k." in message.content.lower() or "british" in message.content.lower() or "english" in message.content.lower():
-        await client.add_reaction(message, '👍')
-        print("Thumbs-up!")
-    if "america" in message.content.lower() or "the united states" in message.content.lower() or "the us" in message.content.lower() or "usa" in message.content.lower() or "the u.s." in message.content.lower() or "u.s.a." in message.content.lower():
-        await client.add_reaction(message, '👎')
-        print("Thumbs-down.")
+    for x in england_words:
+        if england_words[x] in message.content.lower():
+            await client.add_reaction(message, '👍')
+            print("Thumbs-up!")
+    for x in america_words[x]:
+        if america_words[x] in message.content.lower():
+            await client.add_reaction(message, '👎')
+            print("Thumbs-down.")
 
 client.run(token)
